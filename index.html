@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -258,8 +257,8 @@
             </div>
         </div>
 
-        <!-- TOUCH CONTROLS OVERLAY (Dynamically responsive for touch-capable tablets, phones & laptops) -->
-        <div id="touchControls" class="absolute bottom-8 left-0 right-0 px-6 sm:px-12 flex justify-between pointer-events-none z-20">
+        <!-- TOUCH CONTROLS OVERLAY (Raised higher using bottom-20 and env(safe-area-inset-bottom) support) -->
+        <div id="touchControls" class="absolute bottom-20 pb-[env(safe-area-inset-bottom)] left-0 right-0 px-6 sm:px-12 flex justify-between pointer-events-none z-20">
             <button id="leftTouchBtn" class="pointer-events-auto w-16 h-16 sm:w-20 sm:h-20 bg-white/60 active:bg-white/90 backdrop-blur-md rounded-full border-2 border-white flex items-center justify-center text-slate-800 text-2xl sm:text-3xl shadow-xl transition active:scale-90">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
