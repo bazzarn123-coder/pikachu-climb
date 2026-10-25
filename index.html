@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +78,7 @@
             <!-- Right Side: Poké Balls & Power-up Status & Controls Toggle -->
             <div class="flex flex-col items-end gap-2">
                 <div class="flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-2xl shadow-md border border-white pointer-events-auto">
-                    <img src="ball.png" alt="Pokeball" class="w-5 h-5 object-contain">
+                    <img src="ball.png" alt="Ball" class="w-5 h-5 object-contain">
                     <span id="starText" class="font-game text-xl text-slate-800">0</span>
                 </div>
 
@@ -108,15 +107,15 @@
         <div id="startOverlay" class="absolute inset-0 bg-sky-900/30 backdrop-blur-[2px] z-30 flex flex-col justify-between p-6 pb-12 overflow-y-auto">
             <div class="text-center mt-6">
                 <div class="inline-block bg-white/90 backdrop-blur-md px-6 py-3 rounded-3xl shadow-xl border-2 border-sky-200 mb-2">
-                    <h1 class="font-game text-4xl sm:text-5xl text-amber-500 tracking-wider drop-shadow-sm">PIKACHU CLIMB</h1>
-                    <p class="text-xs font-bold text-sky-600 uppercase tracking-widest mt-0.5">Poké Balls & Clouds Edition</p>
+                    <h1 class="font-game text-4xl sm:text-5xl text-sky-600 tracking-wider drop-shadow-sm">PIKACHU CLIMB</h1>
+                    <p class="text-xs font-bold text-sky-500 uppercase tracking-widest mt-0.5">Poké Balls & Clouds Edition</p>
                 </div>
             </div>
 
             <!-- Character Preview Box -->
             <div class="my-auto flex flex-col items-center justify-center gap-3">
                 <div class="relative w-32 h-32 bg-white/60 backdrop-blur-md rounded-full flex items-center justify-center shadow-inner border-4 border-white/80 overflow-hidden">
-                    <img src="1man.png" alt="Pikachu" onerror="this.onerror=null; this.src='https://placehold.co/100x100/f59e0b/ffffff?text=⚡';" class="h-24 w-auto object-contain transform hover:scale-110 transition duration-300">
+                    <img src="man.png" alt="Character" onerror="this.onerror=null; this.src='https://placehold.co/100x100/38bdf8/ffffff?text=🏃';" class="h-24 w-auto object-contain transform hover:scale-110 transition duration-300">
                     <div id="shieldPreview" class="hidden absolute inset-0 border-4 border-cyan-400 rounded-full animate-ping opacity-75"></div>
                 </div>
 
@@ -128,10 +127,7 @@
                     </div>
                     <div class="bg-white/90 px-4 py-2 rounded-2xl shadow border border-white/80 text-center min-w-[100px]">
                         <div class="text-[10px] uppercase font-bold text-slate-400">Total Poké Balls</div>
-                        <div id="menuTotalStars" class="font-game text-lg text-red-500 flex items-center justify-center gap-1">
-                            <img src="ball.png" alt="Pokeball" class="w-4 h-4 object-contain inline">
-                            <span id="menuTotalStarsText">0</span>
-                        </div>
+                        <div id="menuTotalStars" class="font-game text-lg text-red-500">0</div>
                     </div>
                 </div>
             </div>
@@ -180,10 +176,7 @@
                     </div>
                     <div class="flex justify-between items-center text-sm">
                         <span class="text-slate-500 font-bold">Poké Balls Collected</span>
-                        <span id="goStars" class="font-game text-lg text-red-500 flex items-center gap-1">
-                            <img src="ball.png" alt="Pokeball" class="w-4 h-4 object-contain">
-                            <span id="goStarsText">+0</span>
-                        </span>
+                        <span id="goStars" class="font-game text-lg text-red-500">+0</span>
                     </div>
                     <div class="flex justify-between items-center text-sm border-t border-slate-200 pt-2">
                         <span class="text-slate-500 font-bold">Max Combo</span>
@@ -199,7 +192,7 @@
                             <span>CONTINUE?</span>
                         </span>
                         <span class="bg-black/20 px-3 py-1 rounded-xl text-sm flex items-center gap-1">
-                            <img src="ball.png" alt="Pokeball" class="w-4 h-4 object-contain">
+                            <img src="ball.png" alt="Ball" class="w-4 h-4 object-contain">
                             <span id="continueCostText">50</span>
                         </span>
                     </button>
@@ -226,8 +219,8 @@
 
                 <div class="bg-amber-100/80 my-3 px-4 py-2 rounded-2xl border border-amber-200 flex justify-between items-center">
                     <span class="text-xs font-bold text-amber-800 uppercase">Your Balance</span>
-                    <div class="flex items-center gap-1.5 font-game text-lg text-red-600">
-                        <img src="ball.png" alt="Pokeball" class="w-5 h-5 object-contain">
+                    <div class="flex items-center gap-1.5 font-game text-lg text-slate-800">
+                        <img src="ball.png" alt="Ball" class="w-5 h-5 object-contain">
                         <span id="shopStarBalance">0</span>
                     </div>
                 </div>
@@ -278,7 +271,7 @@
 
     <!-- GAME ENGINE CODE -->
     <script>
-        const STORAGE_KEY = 'pikachu_climb_save_v1';
+        const STORAGE_KEY = 'pikachu_climb_save_v3';
 
         let audioCtx = null;
         let rocketSynth = null;
@@ -293,7 +286,7 @@
             }
         }
 
-        function playBallSound() {
+        function playCoinSound() {
             try {
                 initAudio();
                 if (!audioCtx) return;
@@ -388,7 +381,7 @@
             ],
             achievements: [
                 { id: 'a1', title: 'Sky High', desc: 'Reach a score of 100', req: 100, current: 0, reward: 50, unlocked: false, type: 'score' },
-                { id: 'a2', title: 'Poké Ball Master', desc: 'Collect 100 total Poké Balls', req: 100, current: 0, reward: 100, unlocked: false, type: 'totalStars' },
+                { id: 'a2', title: 'Ball Collector', desc: 'Collect 100 total Poké Balls', req: 100, current: 0, reward: 100, unlocked: false, type: 'totalStars' },
                 { id: 'a3', title: 'Power-up Collector', desc: 'Unlock any powerup in shop', req: 1, current: 0, reward: 40, unlocked: false, type: 'powerupUnlocked' }
             ]
         };
@@ -412,10 +405,10 @@
         }
 
         const POWERUPS_CONFIG = {
-            magnet: { name: 'Ball Magnet', icon: 'fa-magnet', bgColor: 'bg-red-500', costs: [50, 100, 200], durations: [600, 900, 1200], desc: 'Attracts nearby Poké Balls automatically.' },
+            magnet: { name: 'Magnet Ball', image: 'mag.png', bgColor: 'bg-indigo-600', costs: [50, 100, 200], durations: [600, 900, 1200], desc: 'Attracts nearby Poké Balls automatically.' },
             shield: { name: 'Cloud Shield', icon: 'fa-shield-halved', bgColor: 'bg-cyan-500', costs: [60, 120, 250], durations: [1, 1, 2], desc: 'Protects you from falling once or twice.' },
             spring: { name: 'Super Boots', icon: 'fa-shoe-prints', bgColor: 'bg-emerald-500', costs: [40, 80, 150], durations: [1, 2, 3], desc: 'Allows mid-air double jumps!' },
-            rocket: { name: 'Rocket Boost', icon: 'fa-rocket', bgColor: 'bg-amber-500', costs: [100, 200, 400], durations: [180, 270, 360], desc: 'Blasts you high into the sky safely.' }
+            rocket: { name: 'Rocket Boost', image: 'rocket.png', bgColor: 'bg-amber-500', costs: [100, 200, 400], durations: [180, 270, 360], desc: 'Blasts you high into the sky safely.' }
         };
 
         const canvas = document.getElementById('gameCanvas');
@@ -425,8 +418,10 @@
         const imgBlue = new Image(); imgBlue.src = 'blue.png';
         const imgPurple = new Image(); imgPurple.src = 'purple.png';
         const imgMan = new Image(); imgMan.src = 'man.png';
-        const imgBullet = new Image(); imgBullet.src = '1bullet.png';
+        const imgBullet = new Image(); imgBullet.src = 'bullet.png';
         const imgBall = new Image(); imgBall.src = 'ball.png';
+        const imgMag = new Image(); imgMag.src = 'mag.png';
+        const imgRocket = new Image(); imgRocket.src = 'rocket.png';
 
         let isGameRunning = false;
         let isPaused = false;
@@ -442,7 +437,7 @@
 
         const player = {
             x: 0, y: 0,
-            width: 42, height: 48,
+            width: 46.2, height: 52.8,
             vx: 0, vy: 0,
             gravity: 0.38,
             jumpStrength: -11.5,
@@ -584,7 +579,7 @@
             if (Math.random() < 0.5) {
                 starsList.push({
                     x: xPos + width / 2 - 12,
-                    y: yPos - 30,
+                    y: yPos - 32,
                     width: 24, height: 24,
                     collected: false
                 });
@@ -678,8 +673,8 @@
                 activePowerups.magnetTimer--;
                 starsList.forEach(s => {
                     if (!s.collected) {
-                        const dx = (player.x + player.width/2) - (s.x + s.width/2);
-                        const dy = (player.y + player.height/2) - (s.y + s.height/2);
+                        const dx = (player.x + player.width/2) - (s.x + 12);
+                        const dy = (player.y + player.height/2) - (s.y + 12);
                         const dist = Math.hypot(dx, dy);
                         if (dist < 220) {
                             s.x += (dx / dist) * 8;
@@ -697,11 +692,11 @@
                         player.y + player.height > s.y) {
                         
                         s.collected = true;
-                        playBallSound();
+                        playCoinSound();
                         const gained = 1 * comboMultiplier;
                         sessionStars += gained;
                         userProgress.stars += gained;
-                        createParticles(s.x + s.width/2, s.y + s.height/2, '#ef4444', 8);
+                        createParticles(s.x, s.y, '#ef4444', 8);
                         saveData();
                         checkMissionsProgress('stars', sessionStars);
                     }
@@ -718,8 +713,8 @@
                     item.collected = true;
                     if (item.type === 'magnet') activePowerups.magnetTimer = POWERUPS_CONFIG.magnet.durations[userProgress.upgrades.magnet || 0];
                     if (item.type === 'rocket') activePowerups.rocketTimer = POWERUPS_CONFIG.rocket.durations[userProgress.upgrades.rocket || 0];
-                    playBallSound();
-                    triggerToast(`Activated ${item.type.toUpperCase()}!`, 'fa-bolt');
+                    playCoinSound();
+                    triggerToast(`Activated ${item.type.toUpperCase()}!`, item.type === 'magnet' ? 'fa-magnet' : 'fa-rocket');
                 }
             });
 
@@ -833,7 +828,7 @@
                     } else {
                         ctx.fillStyle = '#ef4444';
                         ctx.beginPath();
-                        ctx.arc(s.x + s.width / 2, s.y + s.height / 2, s.width / 2, 0, Math.PI * 2);
+                        ctx.arc(s.x + 12, s.y + 12, 10, 0, Math.PI * 2);
                         ctx.fill();
                     }
                 }
@@ -841,14 +836,15 @@
 
             powerupItems.forEach(item => {
                 if (!item.collected) {
-                    ctx.fillStyle = item.type === 'magnet' ? '#ef4444' : '#f59e0b';
-                    ctx.beginPath();
-                    ctx.arc(item.x + 12, item.y + 12, 12, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.fillStyle = '#ffffff';
-                    ctx.font = '12px Fredoka One';
-                    ctx.textAlign = 'center';
-                    ctx.fillText(item.type === 'magnet' ? 'M' : 'R', item.x + 12, item.y + 16);
+                    const itemImg = item.type === 'magnet' ? imgMag : imgRocket;
+                    if (itemImg.complete && itemImg.naturalWidth !== 0) {
+                        ctx.drawImage(itemImg, item.x, item.y, item.width, item.height);
+                    } else {
+                        ctx.fillStyle = item.type === 'magnet' ? '#ef4444' : '#f59e0b';
+                        ctx.beginPath();
+                        ctx.arc(item.x + 12, item.y + 12, 12, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
                 }
             });
 
@@ -873,14 +869,14 @@
             } else {
                 ctx.font = '34px serif';
                 ctx.textAlign = 'center';
-                ctx.fillText((activePowerups.rocketTimer > 0) ? '🚀' : '⚡', player.x + player.width / 2, player.y + player.height);
+                ctx.fillText((activePowerups.rocketTimer > 0) ? '🚀' : '🏃', player.x + player.width / 2, player.y + player.height);
             }
 
             if (activePowerups.shieldHits > 0) {
                 ctx.strokeStyle = '#06b6d4';
                 ctx.lineWidth = 3;
                 ctx.beginPath();
-                ctx.arc(player.x + player.width/2, player.y + player.height/2, 28, 0, Math.PI * 2);
+                ctx.arc(player.x + player.width/2, player.y + player.height/2, 31, 0, Math.PI * 2);
                 ctx.stroke();
             }
 
@@ -907,27 +903,26 @@
             const pContainer = document.getElementById('powerupContainer');
             pContainer.innerHTML = '';
 
-            if (activePowerups.magnetTimer > 0) pContainer.appendChild(createHudBadge('fa-magnet', 'bg-red-500', `${Math.ceil(activePowerups.magnetTimer/60)}s`));
-            if (activePowerups.shieldHits > 0) pContainer.appendChild(createHudBadge('fa-shield-halved', 'bg-cyan-500', `${activePowerups.shieldHits} Hits`));
-            if (activePowerups.doubleJumps > 0) pContainer.appendChild(createHudBadge('fa-shoe-prints', 'bg-emerald-500', `${activePowerups.doubleJumps} Jumps`));
-            if (activePowerups.rocketTimer > 0) pContainer.appendChild(createHudBadge('fa-rocket', 'bg-amber-500', `${Math.ceil(activePowerups.rocketTimer/60)}s`));
+            if (activePowerups.magnetTimer > 0) pContainer.appendChild(createHudBadge('mag.png', 'bg-indigo-600', `${Math.ceil(activePowerups.magnetTimer/60)}s`));
+            if (activePowerups.shieldHits > 0) pContainer.appendChild(createHudBadge(null, 'bg-cyan-500', `${activePowerups.shieldHits} Hits`, 'fa-shield-halved'));
+            if (activePowerups.doubleJumps > 0) pContainer.appendChild(createHudBadge(null, 'bg-emerald-500', `${activePowerups.doubleJumps} Jumps`, 'fa-shoe-prints'));
+            if (activePowerups.rocketTimer > 0) pContainer.appendChild(createHudBadge('rocket.png', 'bg-amber-500', `${Math.ceil(activePowerups.rocketTimer/60)}s`));
         }
 
-        function createHudBadge(iconClass, bgColor, text) {
+        function createHudBadge(imageSrc, bgColor, text, iconClass) {
             const div = document.createElement('div');
             div.className = `${bgColor} text-white px-2.5 py-1 rounded-xl text-xs font-game flex items-center gap-1.5 shadow-md`;
-            div.innerHTML = `<i class="fa-solid ${iconClass}"></i><span>${text}</span>`;
+            if (imageSrc) {
+                div.innerHTML = `<img src="${imageSrc}" class="w-4 h-4 object-contain"><span>${text}</span>`;
+            } else {
+                div.innerHTML = `<i class="fa-solid ${iconClass}"></i><span>${text}</span>`;
+            }
             return div;
         }
 
         function updateMenuUI() {
             document.getElementById('menuHighScore').innerText = userProgress.highScore;
-            const menuTotalStarsText = document.getElementById('menuTotalStarsText');
-            if (menuTotalStarsText) {
-                menuTotalStarsText.innerText = userProgress.stars;
-            } else {
-                document.getElementById('menuTotalStars').innerText = userProgress.stars;
-            }
+            document.getElementById('menuTotalStars').innerText = userProgress.stars;
             document.getElementById('shopStarBalance').innerText = userProgress.stars;
             renderShopItems();
             renderMissions();
@@ -947,8 +942,8 @@
                 card.className = 'bg-white/90 p-3.5 rounded-2xl shadow border border-slate-100 flex items-center justify-between gap-3';
                 card.innerHTML = `
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-2xl ${conf.bgColor} text-white flex items-center justify-center text-xl shadow-md">
-                            <i class="fa-solid ${conf.icon}"></i>
+                        <div class="w-12 h-12 rounded-2xl ${conf.bgColor} text-white flex items-center justify-center text-xl shadow-md overflow-hidden p-1.5">
+                            ${conf.image ? `<img src="${conf.image}" class="w-full h-full object-contain">` : `<i class="fa-solid ${conf.icon}"></i>`}
                         </div>
                         <div>
                             <div class="font-game text-slate-800 text-sm">${conf.name}</div>
@@ -962,7 +957,7 @@
                     </div>
                     <button onclick="buyPowerup('${key}')" ${isMax || userProgress.stars < cost ? 'disabled' : ''} 
                             class="btn-bounce px-3 py-2 rounded-xl font-game text-xs flex items-center gap-1 ${isMax ? 'bg-slate-200 text-slate-400' : 'bg-amber-400 hover:bg-amber-500 text-white shadow-md disabled:opacity-50'}">
-                        ${isMax ? 'MAXED' : `<img src="ball.png" alt="Pokeball" class="w-4 h-4 object-contain inline"> ${cost}`}
+                        ${isMax ? 'MAXED' : `<img src="ball.png" class="w-3.5 h-3.5 object-contain"> ${cost}`}
                     </button>
                 `;
                 container.appendChild(card);
@@ -979,7 +974,7 @@
                 userProgress.stars -= cost;
                 userProgress.upgrades[key] = currentLevel + 1;
                 saveData();
-                triggerToast(`Upgraded ${conf.name}!`, conf.icon);
+                triggerToast(`Upgraded ${conf.name}!`, conf.icon || 'fa-bolt');
                 checkMissionsProgress('powerupUnlocked', 1);
             }
         }
@@ -1005,7 +1000,7 @@
                     </div>
                     <button ${isDone || item.current < item.req ? 'disabled' : ''} onclick="claimReward('${item.id}', '${activeTab}')"
                             class="btn-bounce px-3 py-2 rounded-xl font-game text-xs ${isDone ? 'bg-slate-200 text-slate-400' : (item.current >= item.req ? 'bg-emerald-500 text-white shadow-md' : 'bg-slate-100 text-slate-400')}">
-                        ${isDone ? 'DONE' : `+${item.reward} <img src="ball.png" alt="Pokeball" class="w-3.5 h-3.5 object-contain inline">`}
+                        ${isDone ? 'DONE' : `+${item.reward} 🔴`}
                     </button>
                 `;
                 container.appendChild(card);
@@ -1038,7 +1033,7 @@
                 else item.unlocked = true;
                 userProgress.stars += item.reward;
                 saveData();
-                triggerToast(`Claimed +${item.reward} Poké Balls!`, 'fa-circle');
+                triggerToast(`Claimed +${item.reward} Poké Balls!`, 'fa-circle-dot');
             }
         }
 
@@ -1087,7 +1082,7 @@
             saveData();
 
             document.getElementById('goScore').innerText = gameScore;
-            document.getElementById('goStarsText').innerText = `+${sessionStars}`;
+            document.getElementById('goStars').innerText = `+${sessionStars}`;
             document.getElementById('goCombo').innerText = `${maxComboInSession}x`;
             document.getElementById('continueCostText').innerText = continueCost;
 
@@ -1143,7 +1138,6 @@
             setTimeout(() => toast.classList.add('hidden'), 2200);
         }
 
-        // Keyboard Navigation
         window.addEventListener('keydown', e => {
             if (e.key === 'ArrowLeft' || e.key === 'a') keys.left = true;
             if (e.key === 'ArrowRight' || e.key === 'd') keys.right = true;
@@ -1160,7 +1154,6 @@
             keys.right = false;
         });
 
-        // Touch Interaction Listeners for On-Screen Buttons & Tap-to-Double-Jump
         const leftBtn = document.getElementById('leftTouchBtn');
         const rightBtn = document.getElementById('rightTouchBtn');
 
@@ -1177,7 +1170,6 @@
         rightBtn.addEventListener('touchcancel', clearRight);
         rightBtn.addEventListener('mouseleave', clearRight);
 
-        // Tap on Canvas for Mid-air Double Jump
         canvas.addEventListener('touchstart', (e) => {
             if (e.target !== leftBtn && e.target !== rightBtn) {
                 initAudio();
