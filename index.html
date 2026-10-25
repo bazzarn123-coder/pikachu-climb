@@ -1,12 +1,12 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Mario Climb</title>
+    <title>Pikachu Climb</title>
     <!-- Browser Address Bar Icon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍄</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
@@ -76,10 +76,10 @@
                 </div>
             </div>
 
-            <!-- Right Side: Coins & Power-up Status & Controls Toggle -->
+            <!-- Right Side: Poké Balls & Power-up Status & Controls Toggle -->
             <div class="flex flex-col items-end gap-2">
                 <div class="flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-2xl shadow-md border border-white pointer-events-auto">
-                    <i class="fa-solid fa-coins text-amber-400 text-lg animate-bounce"></i>
+                    <img src="ball.png" alt="Pokeball" class="w-5 h-5 object-contain">
                     <span id="starText" class="font-game text-xl text-slate-800">0</span>
                 </div>
 
@@ -108,27 +108,30 @@
         <div id="startOverlay" class="absolute inset-0 bg-sky-900/30 backdrop-blur-[2px] z-30 flex flex-col justify-between p-6 pb-12 overflow-y-auto">
             <div class="text-center mt-6">
                 <div class="inline-block bg-white/90 backdrop-blur-md px-6 py-3 rounded-3xl shadow-xl border-2 border-sky-200 mb-2">
-                    <h1 class="font-game text-4xl sm:text-5xl text-sky-600 tracking-wider drop-shadow-sm">MARIO CLIMB</h1>
-                    <p class="text-xs font-bold text-sky-500 uppercase tracking-widest mt-0.5">Coins & Clouds Edition</p>
+                    <h1 class="font-game text-4xl sm:text-5xl text-amber-500 tracking-wider drop-shadow-sm">PIKACHU CLIMB</h1>
+                    <p class="text-xs font-bold text-sky-600 uppercase tracking-widest mt-0.5">Poké Balls & Clouds Edition</p>
                 </div>
             </div>
 
             <!-- Character Preview Box -->
             <div class="my-auto flex flex-col items-center justify-center gap-3">
                 <div class="relative w-32 h-32 bg-white/60 backdrop-blur-md rounded-full flex items-center justify-center shadow-inner border-4 border-white/80 overflow-hidden">
-                    <img src="man.png" alt="Character" onerror="this.onerror=null; this.src='https://placehold.co/100x100/38bdf8/ffffff?text=🏃';" class="h-24 w-auto object-contain transform hover:scale-110 transition duration-300">
+                    <img src="man.png" alt="Pikachu" onerror="this.onerror=null; this.src='https://placehold.co/100x100/f59e0b/ffffff?text=⚡';" class="h-24 w-auto object-contain transform hover:scale-110 transition duration-300">
                     <div id="shieldPreview" class="hidden absolute inset-0 border-4 border-cyan-400 rounded-full animate-ping opacity-75"></div>
                 </div>
 
-                <!-- High Score & Coin Display -->
+                <!-- High Score & Poké Ball Display -->
                 <div class="flex gap-4">
                     <div class="bg-white/90 px-4 py-2 rounded-2xl shadow border border-white/80 text-center min-w-[100px]">
                         <div class="text-[10px] uppercase font-bold text-slate-400">High Score</div>
                         <div id="menuHighScore" class="font-game text-lg text-slate-700">0</div>
                     </div>
                     <div class="bg-white/90 px-4 py-2 rounded-2xl shadow border border-white/80 text-center min-w-[100px]">
-                        <div class="text-[10px] uppercase font-bold text-slate-400">Total Coins</div>
-                        <div id="menuTotalStars" class="font-game text-lg text-amber-500">0</div>
+                        <div class="text-[10px] uppercase font-bold text-slate-400">Total Poké Balls</div>
+                        <div id="menuTotalStars" class="font-game text-lg text-red-500 flex items-center justify-center gap-1">
+                            <img src="ball.png" alt="Pokeball" class="w-4 h-4 object-contain inline">
+                            <span id="menuTotalStarsText">0</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -176,8 +179,11 @@
                         <span id="goScore" class="font-game text-xl text-slate-800">0</span>
                     </div>
                     <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-500 font-bold">Coins Collected</span>
-                        <span id="goStars" class="font-game text-lg text-amber-500">+0</span>
+                        <span class="text-slate-500 font-bold">Poké Balls Collected</span>
+                        <span id="goStars" class="font-game text-lg text-red-500 flex items-center gap-1">
+                            <img src="ball.png" alt="Pokeball" class="w-4 h-4 object-contain">
+                            <span id="goStarsText">+0</span>
+                        </span>
                     </div>
                     <div class="flex justify-between items-center text-sm border-t border-slate-200 pt-2">
                         <span class="text-slate-500 font-bold">Max Combo</span>
@@ -193,7 +199,7 @@
                             <span>CONTINUE?</span>
                         </span>
                         <span class="bg-black/20 px-3 py-1 rounded-xl text-sm flex items-center gap-1">
-                            <i class="fa-solid fa-coins text-amber-200"></i>
+                            <img src="ball.png" alt="Pokeball" class="w-4 h-4 object-contain">
                             <span id="continueCostText">50</span>
                         </span>
                     </button>
@@ -220,8 +226,8 @@
 
                 <div class="bg-amber-100/80 my-3 px-4 py-2 rounded-2xl border border-amber-200 flex justify-between items-center">
                     <span class="text-xs font-bold text-amber-800 uppercase">Your Balance</span>
-                    <div class="flex items-center gap-1.5 font-game text-lg text-amber-600">
-                        <i class="fa-solid fa-coins"></i>
+                    <div class="flex items-center gap-1.5 font-game text-lg text-red-600">
+                        <img src="ball.png" alt="Pokeball" class="w-5 h-5 object-contain">
                         <span id="shopStarBalance">0</span>
                     </div>
                 </div>
@@ -253,13 +259,13 @@
                 <div class="flex-1 overflow-y-auto space-y-3 pr-1" id="taskListContainer"></div>
 
                 <div class="pt-3 border-t border-slate-200 text-center">
-                    <p class="text-[11px] text-slate-500 font-medium">Complete daily missions for extra coin rewards!</p>
+                    <p class="text-[11px] text-slate-500 font-medium">Complete daily missions for extra Poké Ball rewards!</p>
                 </div>
             </div>
         </div>
 
-        <!-- TOUCH CONTROLS OVERLAY (Dynamically responsive for touch-capable tablets, phones & laptops) -->
-        <div id="touchControls" class="absolute bottom-8 left-0 right-0 px-6 sm:px-12 flex justify-between pointer-events-none z-20">
+        <!-- TOUCH CONTROLS OVERLAY -->
+        <div id="touchControls" class="absolute bottom-20 pb-[env(safe-area-inset-bottom)] left-0 right-0 px-6 sm:px-12 flex justify-between pointer-events-none z-20">
             <button id="leftTouchBtn" class="pointer-events-auto w-16 h-16 sm:w-20 sm:h-20 bg-white/60 active:bg-white/90 backdrop-blur-md rounded-full border-2 border-white flex items-center justify-center text-slate-800 text-2xl sm:text-3xl shadow-xl transition active:scale-90">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
@@ -272,7 +278,7 @@
 
     <!-- GAME ENGINE CODE -->
     <script>
-        const STORAGE_KEY = 'mario_climb_save_v3';
+        const STORAGE_KEY = 'pikachu_climb_save_v1';
 
         let audioCtx = null;
         let rocketSynth = null;
@@ -287,7 +293,7 @@
             }
         }
 
-        function playCoinSound() {
+        function playBallSound() {
             try {
                 initAudio();
                 if (!audioCtx) return;
@@ -376,13 +382,13 @@
             highScore: 0,
             upgrades: { magnet: 0, shield: 0, spring: 0, rocket: 0 },
             missions: [
-                { id: 'm1', title: 'Collect 15 Coins', req: 15, current: 0, reward: 20, done: false, type: 'stars' },
+                { id: 'm1', title: 'Collect 15 Poké Balls', req: 15, current: 0, reward: 20, done: false, type: 'stars' },
                 { id: 'm2', title: 'Reach 50 Height Score', req: 50, current: 0, reward: 30, done: false, type: 'score' },
                 { id: 'm3', title: 'Achieve a 5x Combo', req: 5, current: 0, reward: 25, done: false, type: 'combo' }
             ],
             achievements: [
                 { id: 'a1', title: 'Sky High', desc: 'Reach a score of 100', req: 100, current: 0, reward: 50, unlocked: false, type: 'score' },
-                { id: 'a2', title: 'Coin Collector', desc: 'Collect 100 total coins', req: 100, current: 0, reward: 100, unlocked: false, type: 'totalStars' },
+                { id: 'a2', title: 'Poké Ball Master', desc: 'Collect 100 total Poké Balls', req: 100, current: 0, reward: 100, unlocked: false, type: 'totalStars' },
                 { id: 'a3', title: 'Power-up Collector', desc: 'Unlock any powerup in shop', req: 1, current: 0, reward: 40, unlocked: false, type: 'powerupUnlocked' }
             ]
         };
@@ -406,7 +412,7 @@
         }
 
         const POWERUPS_CONFIG = {
-            magnet: { name: 'Coin Magnet', icon: 'fa-magnet', bgColor: 'bg-red-500', costs: [50, 100, 200], durations: [600, 900, 1200], desc: 'Attracts nearby gold coins automatically.' },
+            magnet: { name: 'Ball Magnet', icon: 'fa-magnet', bgColor: 'bg-red-500', costs: [50, 100, 200], durations: [600, 900, 1200], desc: 'Attracts nearby Poké Balls automatically.' },
             shield: { name: 'Cloud Shield', icon: 'fa-shield-halved', bgColor: 'bg-cyan-500', costs: [60, 120, 250], durations: [1, 1, 2], desc: 'Protects you from falling once or twice.' },
             spring: { name: 'Super Boots', icon: 'fa-shoe-prints', bgColor: 'bg-emerald-500', costs: [40, 80, 150], durations: [1, 2, 3], desc: 'Allows mid-air double jumps!' },
             rocket: { name: 'Rocket Boost', icon: 'fa-rocket', bgColor: 'bg-amber-500', costs: [100, 200, 400], durations: [180, 270, 360], desc: 'Blasts you high into the sky safely.' }
@@ -420,6 +426,7 @@
         const imgPurple = new Image(); imgPurple.src = 'purple.png';
         const imgMan = new Image(); imgMan.src = 'man.png';
         const imgBullet = new Image(); imgBullet.src = 'bullet.png';
+        const imgBall = new Image(); imgBall.src = 'ball.png';
 
         let isGameRunning = false;
         let isPaused = false;
@@ -451,7 +458,6 @@
 
         const keys = { left: false, right: false };
 
-        // Smart Touch Detection & Dynamic Touch Controls Setup
         function setupTouchDetection() {
             const isTouchCapable = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
             showTouchControls = isTouchCapable;
@@ -476,13 +482,11 @@
             }
         }
 
-        // Full Screen Resizing & Responsive Physics Scale
         function resizeCanvas() {
             const container = document.getElementById('gameContainer');
             canvas.width = container.clientWidth;
             canvas.height = container.clientHeight;
 
-            // Scale movement speed and platform spacing dynamically for varied screen aspect ratios
             const scaleFactor = Math.max(0.85, Math.min(1.3, canvas.width / 420));
             player.moveSpeed = 5.5 * scaleFactor;
             
@@ -579,10 +583,10 @@
 
             if (Math.random() < 0.5) {
                 starsList.push({
-                    x: xPos + width / 2 - 10,
+                    x: xPos + width / 2 - 12,
                     y: yPos - 30,
-                    width: 20, height: 20,
-                    collected: false, rotation: Math.random() * Math.PI
+                    width: 24, height: 24,
+                    collected: false
                 });
             }
 
@@ -674,8 +678,8 @@
                 activePowerups.magnetTimer--;
                 starsList.forEach(s => {
                     if (!s.collected) {
-                        const dx = (player.x + player.width/2) - (s.x + 10);
-                        const dy = (player.y + player.height/2) - (s.y + 10);
+                        const dx = (player.x + player.width/2) - (s.x + s.width/2);
+                        const dy = (player.y + player.height/2) - (s.y + s.height/2);
                         const dist = Math.hypot(dx, dy);
                         if (dist < 220) {
                             s.x += (dx / dist) * 8;
@@ -687,18 +691,17 @@
 
             starsList.forEach(s => {
                 if (!s.collected) {
-                    s.rotation += 0.05;
                     if (player.x < s.x + s.width &&
                         player.x + player.width > s.x &&
                         player.y < s.y + s.height &&
                         player.y + player.height > s.y) {
                         
                         s.collected = true;
-                        playCoinSound();
+                        playBallSound();
                         const gained = 1 * comboMultiplier;
                         sessionStars += gained;
                         userProgress.stars += gained;
-                        createParticles(s.x, s.y, '#f59e0b', 8);
+                        createParticles(s.x + s.width/2, s.y + s.height/2, '#ef4444', 8);
                         saveData();
                         checkMissionsProgress('stars', sessionStars);
                     }
@@ -715,7 +718,7 @@
                     item.collected = true;
                     if (item.type === 'magnet') activePowerups.magnetTimer = POWERUPS_CONFIG.magnet.durations[userProgress.upgrades.magnet || 0];
                     if (item.type === 'rocket') activePowerups.rocketTimer = POWERUPS_CONFIG.rocket.durations[userProgress.upgrades.rocket || 0];
-                    playCoinSound();
+                    playBallSound();
                     triggerToast(`Activated ${item.type.toUpperCase()}!`, 'fa-bolt');
                 }
             });
@@ -825,19 +828,14 @@
 
             starsList.forEach(s => {
                 if (!s.collected) {
-                    ctx.save();
-                    ctx.translate(s.x + 10, s.y + 10);
-                    ctx.scale(Math.cos(s.rotation), 1);
-                    ctx.fillStyle = '#fbbf24';
-                    ctx.strokeStyle = '#d97706';
-                    ctx.lineWidth = 2;
-                    ctx.beginPath();
-                    ctx.arc(0, 0, 9, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.stroke();
-                    ctx.fillStyle = '#fef08a';
-                    ctx.fillRect(-2, -5, 4, 10);
-                    ctx.restore();
+                    if (imgBall.complete && imgBall.naturalWidth !== 0) {
+                        ctx.drawImage(imgBall, s.x, s.y, s.width, s.height);
+                    } else {
+                        ctx.fillStyle = '#ef4444';
+                        ctx.beginPath();
+                        ctx.arc(s.x + s.width / 2, s.y + s.height / 2, s.width / 2, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
                 }
             });
 
@@ -875,7 +873,7 @@
             } else {
                 ctx.font = '34px serif';
                 ctx.textAlign = 'center';
-                ctx.fillText((activePowerups.rocketTimer > 0) ? '🚀' : '🏃', player.x + player.width / 2, player.y + player.height);
+                ctx.fillText((activePowerups.rocketTimer > 0) ? '🚀' : '⚡', player.x + player.width / 2, player.y + player.height);
             }
 
             if (activePowerups.shieldHits > 0) {
@@ -924,7 +922,12 @@
 
         function updateMenuUI() {
             document.getElementById('menuHighScore').innerText = userProgress.highScore;
-            document.getElementById('menuTotalStars').innerText = userProgress.stars;
+            const menuTotalStarsText = document.getElementById('menuTotalStarsText');
+            if (menuTotalStarsText) {
+                menuTotalStarsText.innerText = userProgress.stars;
+            } else {
+                document.getElementById('menuTotalStars').innerText = userProgress.stars;
+            }
             document.getElementById('shopStarBalance').innerText = userProgress.stars;
             renderShopItems();
             renderMissions();
@@ -959,7 +962,7 @@
                     </div>
                     <button onclick="buyPowerup('${key}')" ${isMax || userProgress.stars < cost ? 'disabled' : ''} 
                             class="btn-bounce px-3 py-2 rounded-xl font-game text-xs flex items-center gap-1 ${isMax ? 'bg-slate-200 text-slate-400' : 'bg-amber-400 hover:bg-amber-500 text-white shadow-md disabled:opacity-50'}">
-                        ${isMax ? 'MAXED' : `<i class="fa-solid fa-coins"></i> ${cost}`}
+                        ${isMax ? 'MAXED' : `<img src="ball.png" alt="Pokeball" class="w-4 h-4 object-contain inline"> ${cost}`}
                     </button>
                 `;
                 container.appendChild(card);
@@ -1002,7 +1005,7 @@
                     </div>
                     <button ${isDone || item.current < item.req ? 'disabled' : ''} onclick="claimReward('${item.id}', '${activeTab}')"
                             class="btn-bounce px-3 py-2 rounded-xl font-game text-xs ${isDone ? 'bg-slate-200 text-slate-400' : (item.current >= item.req ? 'bg-emerald-500 text-white shadow-md' : 'bg-slate-100 text-slate-400')}">
-                        ${isDone ? 'DONE' : `+${item.reward} 🪙`}
+                        ${isDone ? 'DONE' : `+${item.reward} <img src="ball.png" alt="Pokeball" class="w-3.5 h-3.5 object-contain inline">`}
                     </button>
                 `;
                 container.appendChild(card);
@@ -1035,7 +1038,7 @@
                 else item.unlocked = true;
                 userProgress.stars += item.reward;
                 saveData();
-                triggerToast(`Claimed +${item.reward} Coins!`, 'fa-coins');
+                triggerToast(`Claimed +${item.reward} Poké Balls!`, 'fa-circle');
             }
         }
 
@@ -1084,7 +1087,7 @@
             saveData();
 
             document.getElementById('goScore').innerText = gameScore;
-            document.getElementById('goStars').innerText = `+${sessionStars}`;
+            document.getElementById('goStarsText').innerText = `+${sessionStars}`;
             document.getElementById('goCombo').innerText = `${maxComboInSession}x`;
             document.getElementById('continueCostText').innerText = continueCost;
 
